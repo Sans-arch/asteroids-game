@@ -33,6 +33,11 @@ def main():
         updatable_group.update(dt)
         
         for asteroid in asteroids_group:
+            for bullet in shot_group:
+                if asteroid.collides_with(bullet):
+                    bullet.kill()
+                    asteroid.kill()
+            
             if asteroid.collides_with(player):
                 print("Game over!")
                 sys.exit()
